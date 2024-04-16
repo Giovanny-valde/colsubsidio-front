@@ -1,0 +1,49 @@
+<!-- <br> -->
+<div class="container">
+  <br>
+  <h1 class="text-center">Reporte</h1>
+  <br>
+  <form  [formGroup]="reporteForm" class="row g-4" style="margin-left: 20%;">
+    <div class="col-auto">
+      <label class="form-label">Fecha inicial</label>
+      <input type="date" class="form-control" formControlName="fechaInicial">
+    </div>
+    <div class="col-auto">
+      <label class="form-label">Fecha final</label>
+      <input type="date" class="form-control" formControlName="fechaFin">
+    </div>
+    <div class="col-auto">
+        <label class="form-label">Cliente</label>
+        <select name="" id="" formControlName="id" class="form-select">
+          <option *ngFor="let cliente of clientes" [value]="cliente.id">
+            {{cliente.id}} - {{cliente.nombre}}
+          </option>
+        </select>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary mt-4" (click)="onSubmit()">Buscar</button>
+    </div>
+  </form>
+   <br>
+  <table class="table">
+    <thead>
+      <tr  >
+        <th scope="col">Cuenta</th>
+        <th scope="col">Saldo</th>
+        <th scope="col">Debitos</th>
+        <th scope="col">Creditos</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of reportes">
+        <th scope="row">{{item.cuenta.numero}}</th>
+        <td>{{item.cuenta.saldo}}</td>
+        <td>{{item.debito}}</td>
+        <td>{{item.credito}}</td>
+        <!-- <td>{{item.saldo}}</td>
+        <td>{{item.cliente.nombre}}</td> -->
+      </tr>
+    </tbody>
+  </table>
+
+</div>
